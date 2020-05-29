@@ -43,6 +43,7 @@ public enum WeatherServiceType {
 
 /// Weather Factory
 public class SwiftyWeatherKit {
+    public static let description = "Swifty Weather Kit"
     public static var WeatherFactory = SwiftyWeatherKit()
     
     open class func shared() -> SwiftyWeatherKit {
