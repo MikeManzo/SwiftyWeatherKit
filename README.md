@@ -1,6 +1,6 @@
 # SwiftyWeatherKit
 
-[![Status](https://travis-ci.org/MikeManzo/SwiftyWeatherKit.svg?branch=master)](https://travis-ci.org/MikeManzo/SwiftyWeatherKit)
+![Swift](https://github.com/MikeManzo/SwiftyWeatherKit/workflows/Swift/badge.svg)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mikemanzo/SwiftyWeatherKit.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/MikeManzo/SwiftyWeatherKit.svg)
 ![GitHub All Releases](https://img.shields.io/github/downloads/MikeManzo/SwiftyWeatherKit/total.svg)
