@@ -246,5 +246,4 @@ Once you have successfully called either *getLastMeasurement* or *getHistoricalM
 - [ ] Localization - I will need help with this
 
 ## Copyright & License Information
-Copyright © 2020 Mike Manzo. Released under the [MIT License](https://github.com/MikeManzo/SwiftyWeatherKit
-/blob/master/LICENSE).
+Copyright © 2020 Mike Manzo. Released under the [MIT License](https://github.com/MikeManzo/SwiftyWeatherKit/blob/master/LICENSE).
