@@ -12,7 +12,6 @@ A swift weather package to support multiple weather APIs.
 | Weather API |  Documentation | Supported Format | API Support | Notes
 | :----:  | :----- | :---- | :----: | :---- |
 | [Ambient Weather](https://github.com/ambient-weather/api-docs) | * [API Docs](https://ambientweather.docs.apiary.io/)<br>* [API Wiki](https://github.com/ambient-weather/api-docs/wiki)<br>* [Device Specifications](https://github.com/ambient-weather/api-docs/wiki/Device-Data-Specs) | - [x] JSON<br> - [ ] Real Time | - [x] All Paramaters | Supports error conditions and<br>rate limits as deffined in the API
-|
 
 # Installation
 
