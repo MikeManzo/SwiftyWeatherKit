@@ -245,5 +245,6 @@ Once you have successfully called either *getLastMeasurement* or *getHistoricalM
 - [ ] Extensive testing for multiple reporting devices per service
 - [ ] Localization - I will need help with this
 
-### License
-Copyright 2020 Mike Manzo. Licensed under the Apache License, Version 2.0
+## Copyright & License Information
+Copyright © 2020 Mike Manzo. Released under the [MIT License](https://github.com/MikeManzo/SwiftyWeatherKit
+/blob/master/LICENSE).
