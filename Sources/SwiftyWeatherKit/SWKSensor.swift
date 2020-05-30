@@ -42,6 +42,13 @@ open class SWKSensor {
             _value
         }
     }
+    
+    /// Return the value of the measurement for this sensor as reported by the API
+    var type: SWKSensorType {
+        get {
+            _type
+        }
+    }
 
     /// Return the user-defined name for this sensor
     var name: String {
