@@ -9,14 +9,18 @@ import Foundation
 
 /// Supported Service Types
 public enum SWKSensorType {
+    case WindDirection
     case Temperature
     case AirQuality
+    case WindSpeed
+    case Radiation
+    case RainRate
+    case Humidity
+    case RainDate
     case Pressure
     case Battery
-    case Humidity
     case General
     case Rain
-    case Wind
 }
 
 /// 
@@ -29,65 +33,51 @@ public enum SWKSensorType {
 /// - _value: Current measurement for the sensor
 ///
 open class SWKSensor {
-    private let _type: SWKSensorType
-    private let _description: String
-    private let _sensorID: String
-    private let _unit: String
-    private let _name: String
-    private var _value: Any
+    internal var _type: SWKSensorType
+    internal var _description: String
+    internal var _sensorID: String
+    internal var _unit: String
+    internal var _name: String
+    internal var _value: Any
 
     /// Return the value of the measurement for this sensor as reported by the API
     var measurement: Any {
-        get {
-            _value
-        }
+        return _value
     }
     
     /// Return the value of the measurement for this sensor as reported by the API
     var type: SWKSensorType {
-        get {
-            _type
-        }
+        return _type
     }
 
     /// Return the user-defined name for this sensor
     var name: String {
-        get {
-            _name
-        }
+        return _name
     }
     
     /// Return the api-defined ID for this sensor
     var sensorID: String {
-        get {
-            _sensorID
-        }
+        return _sensorID
     }
    
     /// Return the ap-defined default unit for this sensor
     var unit: String {
-        get {
-            _unit
-        }
+        return _unit
     }
 
     /// Return the user-defined description for this sensor
     var description: String {
-        get {
-            _description
-        }
+        return _description
     }
 
     ///
     /// Provides a simple way to "see" what ths device is reporting
     ///
     var prettyString: String {
-        get {
-            if _unit != "None" {
-                return String("\(_name): \(_value) \(_unit)")
-            } else {
-                return String("\(_name): \(_value)")
-            }
+        if _unit != "None" {
+            return String("\(_name): \(_value) \(_unit)")
+        } else {
+            return String("\(_name): \(_value)")
         }
     }
     

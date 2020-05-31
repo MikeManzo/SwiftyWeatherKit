@@ -204,14 +204,18 @@ where SWKSensor is defined as:
 ```swift
 /// Supported Service Types
 public enum SWKSensorType {
+    case WindDirection
     case Temperature
     case AirQuality
+    case WindSpeed
+    case Radiation
+    case RainRate
+    case Humidity
+    case RainDate
     case Pressure
     case Battery
-    case Humidity
     case General
     case Rain
-    case Wind
 }
 
 /// 
@@ -224,12 +228,12 @@ public enum SWKSensorType {
 /// - _value: Current measurement for the sensor
 ///
 open class SWKSensor {
-    private let _type: SWKSensorType
-    private let _description: String
-    private let _sensorID: String
-    private let _unit: String
-    private let _name: String
-    private var _value: Any
+    internal var _type: SWKSensorType
+    internal var _description: String
+    internal var _sensorID: String
+    internal var _unit: String
+    internal var _name: String
+    internal var _value: Any
 
     .
     .

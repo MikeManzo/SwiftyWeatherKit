@@ -8,22 +8,22 @@
 import Foundation
 
 extension AWStationData {
-    var PressureSensors: [SWKSensor] {
-        let sensors: [SWKSensor?] = [PressureRelative, PressureAbsolute]
+    var PressureSensors: [AWSensor] {
+        let sensors: [AWSensor?] = [PressureRelative, PressureAbsolute]
         return sensors.compactMap{ $0 }
     }
     
-    var PressureRelative: SWKSensor? {
+    var PressureRelative: AWSensor? {
         if barometerRelativeInHg != nil {
-            return SWKSensor(type: .Pressure, name: "Relative Pressure", sensorID: "baromrelin", measurement: barometerRelativeInHg!, unit: "inHg", desc: "Relative Pressure")
+            return AWSensor(type: .Pressure, name: "Relative Pressure", sensorID: "baromrelin", measurement: barometerRelativeInHg!, unit: "inHg", desc: "Relative Pressure")
         } else {
             return nil
         }
     }
     
-    var PressureAbsolute: SWKSensor? {
+    var PressureAbsolute: AWSensor? {
         if barometerAbsoluteInHg != nil {
-            return SWKSensor(type: .Pressure, name: "Absolute Pressure", sensorID: "baromabsin", measurement: barometerAbsoluteInHg!, unit: "inHg", desc: "Absolute Pressure")
+            return AWSensor(type: .Pressure, name: "Absolute Pressure", sensorID: "baromabsin", measurement: barometerAbsoluteInHg!, unit: "inHg", desc: "Absolute Pressure")
         } else {
             return nil
         }
