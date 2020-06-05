@@ -26,9 +26,19 @@ open class AWDevice: SWKDevice, Codable {
         return macAddress
     }
     
-    /// Return the station info.  Note, this returns all info the *user* has entered for teh device
+    /// Return the station info.  Note, this returns all info the *user* has entered for the device
     public var information: AWStationInfo? {
         return info
+    }
+    
+   /// Returns an array containing all sensors that are reporting
+    public var sensors: [AWSensor] {
+        return lastData!.availableSensors as! [AWSensor]
+    }
+    
+    /// Returns an array containing of reporting sensor types
+    public var availabeSensorTypes: [SWKSensorType] {
+        return lastData!.availabeSensorTypes
     }
     
     ///

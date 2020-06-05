@@ -252,13 +252,52 @@ open class AWStationData: SWKDeviceData, Codable {
         case dewPoint10 = "dewPoint10"
     }
 
-    /// Returns an arroay containing all sensors that are reporting
+    /// Returns an array containing all sensors that are reporting
     public var availableSensors: [SWKSensor] {
         let sensors =  BatterySensors + MiscSensors + PressureSensors + RainSensors +
             RelaySensors + TemperatureSensors + WindSensors + AirQualitySensors +
         HumiditySensors
         
         return sensors.compactMap{ $0 }
+    }
+    
+    /// Returns an array containing of reporting sensor types
+    public var availabeSensorTypes: [SWKSensorType] {
+        var types = [SWKSensorType]()
+              
+        if TemperatureSensors.count > 0 {
+            types.append(SWKSensorType.Temperature)
+        }
+
+        if AirQualitySensors.count > 0 {
+            types.append(SWKSensorType.AirQuality)
+        }
+
+        if WindSensors.count > 0 {
+            types.append(SWKSensorType.WindSpeed)
+        }
+
+        if HumiditySensors.count > 0 {
+            types.append(SWKSensorType.Humidity)
+        }
+
+        if PressureSensors.count > 0 {
+            types.append(SWKSensorType.Pressure)
+        }
+
+        if BatterySensors.count > 0 {
+            types.append(SWKSensorType.Battery)
+        }
+
+        if RelaySensors.count > 0 {
+            types.append(SWKSensorType.General)
+        }
+
+        if RainSensors.count > 0 {
+            types.append(SWKSensorType.Rain)
+        }
+
+        return types
     }
     
     ///
