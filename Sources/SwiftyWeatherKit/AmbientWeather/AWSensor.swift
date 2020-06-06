@@ -12,7 +12,13 @@ open class AWSensor: SWKSensor {
     /// Provides a simple way to "see" what ths device is reporting
     ///
     open override var prettyString: String {
-        return String("\(_name): \(_value)")
+        guard let measure = _value as? Measurement else {
+            return String("\(_name): \(_value)")
+        }
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .providedUnit
+        formatter.numberFormatter.maximumFractionDigits = 1
+        return String("\(_name): \(formatter.string(from: measure)) \(_unit)")
     }
 
     ///
