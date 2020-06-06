@@ -12,15 +12,32 @@ open class AWSensor: SWKSensor {
     /// Provides a simple way to "see" what ths device is reporting
     ///
     open override var prettyString: String {
-        guard let measure = _value as? Measurement else {
-            return String("\(_name): \(_value)")
-        }
         let formatter = MeasurementFormatter()
         formatter.unitOptions = .providedUnit
         formatter.numberFormatter.maximumFractionDigits = 1
-        return String("\(_name): \(formatter.string(from: measure)) \(_unit)")
-    }
 
+        switch type {
+        case .Pressure:
+            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitPressure>)) \(_unit)")
+        case .Temperature:
+            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitTemperature>)) \(_unit)")
+        case .AirQuality:
+            return String("\(_name): \(_value)")
+        case .WindSpeed:
+            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitSpeed>)) \(_unit)")
+        case .RainRate:
+            return String("\(_name): \(_value)")
+        case .Rain:
+            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitLength>)) \(_unit)")
+        case .Humidity:
+            return String("\(_name): \(_value)")
+        case .WindDirection:
+            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitAngle>)) \(_unit)")
+        case .Radiation, .Battery, .RainDate, .General: // Unit-less
+            return String("\(_name): \(_value)")
+        }
+    }
+    
     ///
     /// A compact way to progamatically represent an AmbientWeather Sensor as defined in the API docs
     /// - Parameters:
