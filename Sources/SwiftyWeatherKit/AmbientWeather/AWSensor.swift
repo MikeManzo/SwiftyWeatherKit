@@ -11,7 +11,7 @@ open class AWSensor: SWKSensor {
     ///
     /// Provides a simple way to "see" what ths device is reporting
     ///
-    override var prettyString: String {
+    open override var prettyString: String {
         return String("\(_name): \(_value)")
     }
 

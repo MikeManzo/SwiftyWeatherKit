@@ -41,39 +41,39 @@ open class SWKSensor {
     internal var _value: Any
 
     /// Return the value of the measurement for this sensor as reported by the API
-    var measurement: Any {
+    open var measurement: Any {
         return _value
     }
     
     /// Return the value of the measurement for this sensor as reported by the API
-    var type: SWKSensorType {
+    open var type: SWKSensorType {
         return _type
     }
 
     /// Return the user-defined name for this sensor
-    var name: String {
+    open var name: String {
         return _name
     }
     
     /// Return the api-defined ID for this sensor
-    var sensorID: String {
+    open var sensorID: String {
         return _sensorID
     }
    
     /// Return the ap-defined default unit for this sensor
-    var unit: String {
+    open var unit: String {
         return _unit
     }
 
     /// Return the user-defined description for this sensor
-    var description: String {
+    open var description: String {
         return _description
     }
 
     ///
     /// Provides a simple way to "see" what ths device is reporting
     ///
-    var prettyString: String {
+    open var prettyString: String {
         if _unit != "None" {
             return String("\(_name): \(_value) \(_unit)")
         } else {
