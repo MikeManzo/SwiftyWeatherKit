@@ -35,7 +35,10 @@ open class AWSensor: SWKSensor {
             return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitAngle>))")
         case .Battery:
             return String("\(_name): \(_value as! Int == 0 ? "Good" : "Bad")")
-        case .Radiation, .RainDate, .General: // Unit-less
+        case .RainDate:
+            let formatter = ISO8601DateFormatter()            
+            return String("\(_name): \(formatter.date(from: _value as! String))")
+        case .Radiation, .General: // Unit-less
             return String("\(_name): \(_value)")
         }
     }
