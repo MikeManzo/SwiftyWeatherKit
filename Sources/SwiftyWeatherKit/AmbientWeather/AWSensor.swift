@@ -33,7 +33,9 @@ open class AWSensor: SWKSensor {
             return String("\(_name): \(_value)")
         case .WindDirection:
             return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitAngle>))")
-        case .Radiation, .Battery, .RainDate, .General: // Unit-less
+        case .Battery:
+            return String("\(_name): \(_value as! Int == 0 ? "Good" : "Bad")")
+        case .Radiation, .RainDate, .General: // Unit-less
             return String("\(_name): \(_value)")
         }
     }
