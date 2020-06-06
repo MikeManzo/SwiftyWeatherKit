@@ -36,9 +36,10 @@ open class AWSensor: SWKSensor {
         case .Battery:
             return String("\(_name): \(_value as! Int == 0 ? "Good" : "Bad")")
         case .RainDate:
-            let dateFor = DateFormatter()
-            dateFor.dateFormat = "yyyy-MM-dd'T'HH:mm:ss:SSS"
-            return String("\(_name): \(dateFor.date(from: _value as! String))")
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = .init(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            return String("\(_name): \(dateFormatter.date(from: _value as! String))")
         case .Radiation, .General: // Unit-less
             return String("\(_name): \(_value)")
         }
