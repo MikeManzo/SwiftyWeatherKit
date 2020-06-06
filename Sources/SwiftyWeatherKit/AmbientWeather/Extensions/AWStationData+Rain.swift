@@ -17,7 +17,7 @@ extension AWStationData {
     
     var RainRatePerHour: AWSensor? {
         if rainHourIn != nil {
-            return AWSensor(type: .RainDate, name: "Hourly Rain", sensorID: "hourlyrainin", measurement: rainHourIn!, unit: "in/hr", desc: "Hourly Rain Rate")
+            return AWSensor(type: .RainRate, name: "Hourly Rain", sensorID: "hourlyrainin", measurement: rainHourIn!, unit: "in/hr", desc: "Hourly Rain Rate")
         } else {
             return nil
         }
