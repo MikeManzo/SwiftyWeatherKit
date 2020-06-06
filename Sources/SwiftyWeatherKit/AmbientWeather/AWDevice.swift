@@ -20,6 +20,51 @@ open class AWDevice: SWKDevice, Codable {
         case lastData = "lastData"
         case info = "info"
     }
+   
+    /// Return any humidity sensors
+    public var humiditySensors: [AWSensor] {
+        return lastData!.HumiditySensors
+    }
+
+    /// Return any battery sensors
+    public var batterySensors: [AWSensor] {
+        return lastData!.BatterySensors
+    }
+ 
+    /// Return any miscellaneous sensors
+    public var miscellaneousSensors: [AWSensor] {
+        return lastData!.MiscSensors
+    }
+
+    /// Return any pressure sensors
+    public var pressureSensors: [AWSensor] {
+        return lastData!.PressureSensors
+    }
+
+    /// Return any rain sensors
+    public var rainSensors: [AWSensor] {
+        return lastData!.RainSensors
+    }
+
+    /// Return any relay sensors
+    public var relaySensors: [AWSensor] {
+        return lastData!.RelaySensors
+    }
+
+    /// Return any temperature sensors
+    public var temperatureSensors: [AWSensor] {
+        return lastData!.TemperatureSensors
+    }
+    
+    /// Return any wind sensors
+    public var windSensors: [AWSensor] {
+        return lastData!.WindSensors
+    }
+
+    /// Return any air quality sensors
+    public var airQualitySensors: [AWSensor] {
+        return lastData!.AirQualitySensors
+    }
 
     /// Return the MAC Address of the device as reported by AmbientWeather.net
     public var deviceID: String? {
