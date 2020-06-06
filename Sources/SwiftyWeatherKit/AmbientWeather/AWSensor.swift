@@ -39,7 +39,10 @@ open class AWSensor: SWKSensor {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = .init(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-            return String("\(_name): \(dateFormatter.date(from: _value as! String))")
+            let rainDate = dateFormatter.date(from: _value as! String)
+            let rainDateFormatter = DateFormatter()
+            rainDateFormatter.dateFormat = "MMM dd,yyyy hh:mm"
+            return String("\(_name): \(rainDateFormatter.string(from: rainDate!))")
         case .Radiation, .General: // Unit-less
             return String("\(_name): \(_value)")
         }
