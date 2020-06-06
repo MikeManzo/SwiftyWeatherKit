@@ -18,21 +18,21 @@ open class AWSensor: SWKSensor {
 
         switch type {
         case .Pressure:
-            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitPressure>)) \(_unit)")
+            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitPressure>))")
         case .Temperature:
-            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitTemperature>)) \(_unit)")
+            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitTemperature>))")
         case .AirQuality:
             return String("\(_name): \(_value)")
         case .WindSpeed:
-            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitSpeed>)) \(_unit)")
+            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitSpeed>))")
         case .RainRate:
             return String("\(_name): \(_value)")
         case .Rain:
-            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitLength>)) \(_unit)")
+            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitLength>))")
         case .Humidity:
             return String("\(_name): \(_value)")
         case .WindDirection:
-            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitAngle>)) \(_unit)")
+            return String("\(_name): \(formatter.string(from: _value as! Measurement<UnitAngle>))")
         case .Radiation, .Battery, .RainDate, .General: // Unit-less
             return String("\(_name): \(_value)")
         }
