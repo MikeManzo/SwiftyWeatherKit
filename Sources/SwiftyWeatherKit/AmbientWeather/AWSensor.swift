@@ -41,7 +41,7 @@ open class AWSensor: SWKSensor {
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
             let rainDate = dateFormatter.date(from: _value as! String)
             let rainDateFormatter = DateFormatter()
-            rainDateFormatter.dateFormat = "MMM dd,yyyy hh:mm"
+            rainDateFormatter.dateFormat = "MMM dd,yyyy hh:mm a"
             return String("\(_name): \(rainDateFormatter.string(from: rainDate!))")
         case .Radiation, .General: // Unit-less
             return String("\(_name): \(_value)")
