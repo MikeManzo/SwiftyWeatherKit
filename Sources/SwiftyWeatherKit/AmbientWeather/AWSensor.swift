@@ -8,6 +8,47 @@
 import Foundation
 
 open class AWSensor: SWKSensor {
+
+    ///
+    /// Provides a simple way to "see" what ths device is reporting
+    ///
+    open var formattedValue: String {
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .providedUnit
+        formatter.numberFormatter.maximumFractionDigits = 1
+
+        switch type {
+        case .Pressure:
+            return String("\(formatter.string(from: _value as! Measurement<UnitPressure>))")
+        case .Temperature:
+            return String("\(formatter.string(from: _value as! Measurement<UnitTemperature>))")
+        case .AirQuality:
+            return String("\(_value)")
+        case .WindSpeed:
+            return String("\(formatter.string(from: _value as! Measurement<UnitSpeed>))")
+        case .RainRate:
+            return String("\(_value)")
+        case .Rain:
+            return String("\(formatter.string(from: _value as! Measurement<UnitLength>))")
+        case .Humidity:
+            return String("\(_value)")
+        case .WindDirection:
+            return String("\(formatter.string(from: _value as! Measurement<UnitAngle>))")
+        case .Battery:
+            return String("\(_value as! Int == 0 ? "Good" : "Bad")")
+        case .RainDate:
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = .init(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            let rainDate = dateFormatter.date(from: _value as! String)
+            let rainDateFormatter = DateFormatter()
+            rainDateFormatter.dateFormat = "MMM dd,yyyy hh:mm a"
+            return String("\(rainDateFormatter.string(from: rainDate!))")
+        case .Radiation, .General: // Unit-less
+            return String("\(_value)")
+        }
+    }
+
     ///
     /// Provides a simple way to "see" what ths device is reporting
     ///
