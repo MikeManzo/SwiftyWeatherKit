@@ -15,7 +15,7 @@ public protocol WeatherPlatform {
     func setupService(completionHandler: @escaping (WeatherServiceStatus) -> Void)
     func description(uniqueID: String)
 
-    var  reportingDevices: [String: SWKDevice] { get }
+    var  reportingDevices: [[String: SWKDevice]] { get }
 }
 
 public protocol SWKDeviceData {

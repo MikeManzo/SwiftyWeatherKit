@@ -65,13 +65,13 @@ extension AmbientWeatherError: LocalizedError {
 
 public final class AmbientWeather: WeatherPlatform, Codable {
     private let apiEndPoint     = "https://api.ambientweather.net/"
-    private var knownDevices    = [String: AWDevice]()
+    private var knownDevices    = [[String: AWDevice]]()
     private let apiVersion      = "v1"
     private var _applicationKey = ""
     private var _apiKey         = ""
     
     /// Returns an array containing the devices AmbientWeather is reporting
-    public var reportingDevices: [String: SWKDevice] {
+    public var reportingDevices: [[String: SWKDevice]] {
         get {
             return knownDevices
         }
@@ -127,7 +127,8 @@ public final class AmbientWeather: WeatherPlatform, Codable {
                         }
                     } else {
                         for device in try JSONDecoder().decode([AWDevice].self, from: data) {
-                            self?.knownDevices[device.deviceID!] = device
+//                            self?.knownDevices[device.deviceID!] = device
+                            self?.knownDevices.append([device.deviceID!: device])
                         }
                     }
                 } catch let error { // JSON / Decoder 'do'
@@ -225,7 +226,13 @@ public final class AmbientWeather: WeatherPlatform, Codable {
     /// - Parameter uniqueID: MAC address of the weather station
     ///
     public func description(uniqueID: String) {
-        print(knownDevices[uniqueID]?.prettyString ?? AmbientWeatherError.unknown.errorDescription!)
+//        print(knownDevices[uniqueID]?.prettyString ?? AmbientWeatherError.unknown.errorDescription!)  // Original
+//        let newArray = knownDevices.filter { $0.keys.contains(uniqueID) }.flatMap { $0 }.first
+        guard let element = knownDevices.filter({ $0.keys.contains(uniqueID) }).flatMap({ $0 }).first else {
+            print(AmbientWeatherError.unknown.errorDescription!)
+            return
+        }
+        print (element.value.prettyString)
     }
     
     ///
