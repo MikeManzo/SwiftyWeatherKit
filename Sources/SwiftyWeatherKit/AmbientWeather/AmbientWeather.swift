@@ -64,11 +64,11 @@ extension AmbientWeatherError: LocalizedError {
 }
 
 public final class AmbientWeather: WeatherPlatform, Codable {
-    private let apiEndPoint     = "https://api.ambientweather.net/"
-    private var knownDevices    = [[String: AWDevice]]()
-    private let apiVersion      = "v1"
-    private var _applicationKey = ""
-    private var _apiKey         = ""
+    private(set) var apiEndPoint    = "https://api.ambientweather.net/"
+    private var knownDevices        = [[String: AWDevice]]()
+    private(set) var apiVersion     = "v1"
+    private var _applicationKey     = ""
+    private var _apiKey             = ""
     
     /// Returns an array containing the devices AmbientWeather is reporting
     public var reportingDevices: [[String: SWKDevice]] {

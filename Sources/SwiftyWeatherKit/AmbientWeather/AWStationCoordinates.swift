@@ -18,7 +18,7 @@ public class AWStationCoordinates: Codable {
     }
 
     /// If the data is present, return a CLLocation object from the reporting lat/lon
-    var latLon: CLLocation? {
+    open var latLon: CLLocation? {
         if latitude != nil && longitude != nil {
             return CLLocation(latitude: latitude!, longitude: longitude!)
         } else {
