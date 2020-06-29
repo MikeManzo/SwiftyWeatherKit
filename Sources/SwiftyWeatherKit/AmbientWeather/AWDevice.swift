@@ -5,6 +5,7 @@
 //  Created by Mike Manzo on 5/17/20.
 //
 
+import CoreLocation
 import Foundation
 
 ///
@@ -74,6 +75,11 @@ open class AWDevice: SWKDevice, Codable {
     /// Return the station info.  Note, this returns all info the *user* has entered for the device
     public var information: AWStationInfo? {
         return info
+    }
+    
+    /// Return the station location (if available).
+    public var position:  CLLocation? {
+        return info?.geo.position
     }
     
    /// Returns an array containing all sensors that are reporting
