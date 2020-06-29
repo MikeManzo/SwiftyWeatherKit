@@ -22,7 +22,7 @@ public class AWStationGeolocation: Codable {
     }
 
     /// If the data is present, return a CLLocation object from the reporting lat/lon
-    var position: CLLocation? {
+    open var position: CLLocation? {
         guard let coordinate = geoType.coordinate else {return nil}
         guard let altitude = elevation else {return nil}
         return CLLocation(coordinate: coordinate, altitude: altitude,
