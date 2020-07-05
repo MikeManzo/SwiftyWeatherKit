@@ -119,4 +119,20 @@ open class AWDevice: SWKDevice, Codable {
             throw error
         }
     }
+
+    /// We have to roll our own Codable class due to MKMeteoPolyline
+    ///
+    /// - Parameter encoder: encoder to act on
+    /// - Throws: error
+    ///
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        do {
+            try container.encode(macAddress, forKey: .macAddress)
+            try container.encode(info, forKey: .info)
+        } catch let error as EncodingError {
+            throw error
+        }
+    }
 }

@@ -41,4 +41,21 @@ public class AWStationCoordinates: Codable {
             throw error
         }
     }
+    
+    /// We have to roll our own Codable class due to MKMeteoPolyline
+    ///
+    /// - Parameter encoder: encoder to act on
+    /// - Throws: error
+    ///
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        do {
+            try container.encode(latitude, forKey: .latitude)
+            try container.encode(longitude, forKey: .longitude)
+        } catch let error as EncodingError {
+            throw error
+        }
+    }
+
 }

@@ -71,4 +71,21 @@ public class AWStationInfo: Codable {
             throw error
         }
     }
+    
+    /// We have to roll our own Codable class due to MKMeteoPolyline
+    ///
+    /// - Parameter encoder: encoder to act on
+    /// - Throws: error
+    ///
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        do {
+            try container.encode(stationLocation, forKey: .stationLocation)
+            try container.encode(stationName, forKey: .stationName)
+            try container.encode(stationGeoLocation, forKey: .stationGeoLocation)
+        } catch let error as EncodingError {
+            throw error
+        }
+    }
 }
