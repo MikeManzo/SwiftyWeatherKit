@@ -23,7 +23,7 @@ public protocol SWKDeviceData {
     var availableSensors: [SWKSensor] { get }
 }
 
-public protocol SWKDevice {
+public protocol SWKDevice: CustomStringConvertible {
     var prettyString: String { get }
     var deviceID: String? { get }
 }

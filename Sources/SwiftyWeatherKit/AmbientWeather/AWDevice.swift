@@ -12,6 +12,8 @@ import Foundation
 /// [Ambient Weather Device Specification](https://github.com/ambient-weather/api-docs/wiki/Device-Data-Specs)
 ///
 open class AWDevice: SWKDevice, Codable {
+    public var description: String
+    
     private let info: AWStationInfo?
     private let macAddress: String?
     let lastData: AWStationData?
@@ -118,6 +120,8 @@ open class AWDevice: SWKDevice, Codable {
         } catch let error as DecodingError {
             throw error
         }
+        
+        description = "Ambient Weather Device"
     }
 
     /// We have to roll our own Codable class due to MKMeteoPolyline
