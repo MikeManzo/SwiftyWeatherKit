@@ -23,7 +23,15 @@ public protocol SWKDeviceData {
     var availableSensors: [SWKSensor] { get }
 }
 
-public protocol SWKDevice: CustomStringConvertible {
+/// Testing something
+/*public protocol SWKDevice: CustomStringConvertible {
+    var prettyString: String { get }
+    var deviceID: String? { get }
+}
+*/
+/// Testing something
+
+public protocol SWKReportingDevice {
     var prettyString: String { get }
     var deviceID: String? { get }
 }
@@ -39,6 +47,16 @@ public enum WeatherServiceStatus {
 public enum WeatherServiceType {
     case Undefined
     case Ambient
+}
+
+/// Abstract base class for weather devices
+open class SWKDevice: SWKReportingDevice {
+    public var deviceID: String? {
+        return nil
+    }
+    public var prettyString: String {
+        return ""
+    }
 }
 
 /// Weather Factory

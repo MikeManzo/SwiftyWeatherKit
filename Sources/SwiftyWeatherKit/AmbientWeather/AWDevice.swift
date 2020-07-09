@@ -70,7 +70,7 @@ open class AWDevice: SWKDevice, Codable {
     }
 
     /// Return the MAC Address of the device as reported by AmbientWeather.net
-    public var deviceID: String? {
+    public override var deviceID: String? {
         return macAddress
     }
     
@@ -97,7 +97,7 @@ open class AWDevice: SWKDevice, Codable {
     ///
     /// Provides a simple way to "see" what ths device is reporting
     ///
-    public var prettyString: String {
+    public override var prettyString: String {
         let debugInfo = """
         MAC Address: \(macAddress!)
         \(info?.prettyString ?? "INFO: Error")
