@@ -50,7 +50,7 @@ public enum WeatherServiceType {
 }
 
 /// Abstract base class for weather devices
-open class SWKDevice: SWKReportingDevice {
+open class SWKDevice: Codable, SWKReportingDevice {
     public var deviceID: String? {
         return nil
     }
