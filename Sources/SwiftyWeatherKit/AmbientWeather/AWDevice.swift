@@ -135,6 +135,7 @@ open class AWDevice: SWKDevice/*, Codable*/ {
 
         do {
             try container.encode(macAddress, forKey: .macAddress)
+            try container.encode(lastData, forKey: .lastData)
             try container.encode(info, forKey: .info)
         } catch let error as EncodingError {
             throw error
