@@ -12,8 +12,6 @@ import Foundation
 /// [Ambient Weather Device Specification](https://github.com/ambient-weather/api-docs/wiki/Device-Data-Specs)
 ///
 open class AWDevice: SWKDevice/*, Codable*/ {
-    public var description: String
-    
     private let info: AWStationInfo?
     private let macAddress: String?
     let lastData: AWStationData?
@@ -106,7 +104,7 @@ open class AWDevice: SWKDevice/*, Codable*/ {
     }
     
     ///
-    /// Public & Codeable Initializer ... this creates the object and populates it w/ the JSON-derived decoer
+    /// Public & Codeable Initializer ... this creates the object and populates it w/ the JSON-derived decoder
     /// - Parameter decoder: JSON_Derived decoder
     /// - Throws: a decoding error if something has gone wrong
     ///
@@ -121,11 +119,10 @@ open class AWDevice: SWKDevice/*, Codable*/ {
             throw error
         }
         
-        description = "Ambient Weather Device"
         try super.init(from: decoder)
     }
 
-    /// We have to roll our own Codable class due to MKMeteoPolyline
+    /// We have to roll our own Codable class due to custom properties
     ///
     /// - Parameter encoder: encoder to act on
     /// - Throws: error
@@ -140,5 +137,7 @@ open class AWDevice: SWKDevice/*, Codable*/ {
         } catch let error as EncodingError {
             throw error
         }
+        
+        try super.encode(to: encoder)
     }
 }
