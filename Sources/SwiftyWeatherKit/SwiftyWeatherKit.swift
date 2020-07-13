@@ -54,8 +54,17 @@ open class SWKDevice: Codable, SWKReportingDevice {
     public var deviceID: String? {
         return nil
     }
+
     public var prettyString: String {
         return ""
+    }
+    
+    required public init(from decoder: Decoder) throws {
+        // Empty
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        // empty
     }
 }
 
