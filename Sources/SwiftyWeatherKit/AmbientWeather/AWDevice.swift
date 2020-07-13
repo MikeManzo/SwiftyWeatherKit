@@ -68,7 +68,7 @@ open class AWDevice: SWKDevice/*, Codable*/ {
     }
 
     /// Return the MAC Address of the device as reported by AmbientWeather.net
-    public override var deviceID: String? {
+    public var deviceID: String? {
         return macAddress
     }
     
@@ -95,7 +95,7 @@ open class AWDevice: SWKDevice/*, Codable*/ {
     ///
     /// Provides a simple way to "see" what ths device is reporting
     ///
-    public override var prettyString: String {
+    public var prettyString: String {
         let debugInfo = """
         MAC Address: \(macAddress!)
         \(info?.prettyString ?? "INFO: Error")
@@ -119,7 +119,7 @@ open class AWDevice: SWKDevice/*, Codable*/ {
             throw error
         }
         
-        try super.init(from: decoder)
+//        try super.init(from: decoder)
     }
 
     /// We have to roll our own Codable class due to custom properties
@@ -127,7 +127,7 @@ open class AWDevice: SWKDevice/*, Codable*/ {
     /// - Parameter encoder: encoder to act on
     /// - Throws: error
     ///
-    public override func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
         do {
@@ -138,6 +138,6 @@ open class AWDevice: SWKDevice/*, Codable*/ {
             throw error
         }
         
-        try super.encode(to: encoder)
+//        try super.encode(to: encoder)
     }
 }

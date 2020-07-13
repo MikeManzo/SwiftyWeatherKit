@@ -24,11 +24,11 @@ public protocol SWKDeviceData {
 }
 
 /// Testing something
-/*public protocol SWKDevice: CustomStringConvertible {
+public protocol SWKDevice: Codable {
     var prettyString: String { get }
     var deviceID: String? { get }
 }
-*/
+
 /// Testing something
 
 public protocol SWKReportingDevice {
@@ -49,6 +49,7 @@ public enum WeatherServiceType {
     case Ambient
 }
 
+/*
 /// Abstract base class for weather devices
 open class SWKDevice: Codable, SWKReportingDevice {
     public var deviceID: String? {
@@ -66,7 +67,7 @@ open class SWKDevice: Codable, SWKReportingDevice {
     public func encode(to encoder: Encoder) throws {
         // empty
     }
-}
+}*/
 
 /// Weather Factory
 public class SwiftyWeatherKit {
