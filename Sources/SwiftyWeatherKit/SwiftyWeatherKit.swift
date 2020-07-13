@@ -24,7 +24,7 @@ public protocol SWKDeviceData {
 }
 
 /// Testing something
-public protocol SWKDevice: Codable {
+public protocol SWKDevice: NSObject, Codable {
     var prettyString: String { get }
     var deviceID: String? { get }
 }
