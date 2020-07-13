@@ -11,7 +11,7 @@ import Foundation
 ///
 /// [Ambient Weather Device Specification](https://github.com/ambient-weather/api-docs/wiki/Device-Data-Specs)
 ///
-open class AWDevice: NSObject, SWKDevice/*, Codable*/ {
+open class AWDevice: SWKDevice/*, Codable*/ {
     private let info: AWStationInfo?
     private let macAddress: String?
     let lastData: AWStationData?
