@@ -38,14 +38,14 @@ public protocol SWKReportingDevice {
 */
 
 /// Service Status
-public enum WeatherServiceStatus {
+public enum WeatherServiceStatus: Int {
     case NotReporting
     case Reporting
     case Error
 }
 
 /// Supported Service Types
-public enum WeatherServiceType {
+public enum WeatherServiceType: Int {
     case Undefined
     case Ambient
 }
@@ -75,6 +75,7 @@ extension WeatherServiceType: Codable {
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: Key.self)
+
         switch self {
         case .Undefined:
             try container.encode(0, forKey: .rawValue)
