@@ -51,7 +51,13 @@ public enum WeatherServiceType: Int {
 }
 
 extension WeatherServiceType: Codable {
-    public var enumValue:WeatherServiceType? { return self }
+    public var enumValue: WeatherServiceType {
+        switch rawValue {
+        case 0 : return .Undefined
+        case 1 : return .Ambient
+        default: return .Undefined
+        }
+    }
     
     enum Key: CodingKey {
         case rawValue
