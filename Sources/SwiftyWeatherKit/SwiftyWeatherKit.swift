@@ -51,7 +51,7 @@ public enum WeatherServiceType: Int {
 }
 
 extension WeatherServiceType: Codable {
-    public var value:WeatherServiceType? { return self }
+    public var enumValue:WeatherServiceType? { return self }
     
     enum Key: CodingKey {
         case rawValue
