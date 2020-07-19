@@ -30,11 +30,12 @@ public protocol SWKDevice: Codable {
 }
 
 /// Testing something
-
+/*
 public protocol SWKReportingDevice {
     var prettyString: String { get }
     var deviceID: String? { get }
 }
+*/
 
 /// Service Status
 public enum WeatherServiceStatus {
@@ -47,6 +48,40 @@ public enum WeatherServiceStatus {
 public enum WeatherServiceType {
     case Undefined
     case Ambient
+}
+
+extension WeatherServiceType: Codable {
+    enum Key: CodingKey {
+        case rawValue
+    }
+
+    enum CodingError: Error {
+        case unknownValue
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
+
+        let rawValue = try container.decode(Int.self, forKey: .rawValue)
+        switch rawValue {
+        case 0:
+            self = .Undefined
+        case 1:
+            self = .Ambient
+        default:
+            throw CodingError.unknownValue
+        }
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Key.self)
+        switch self {
+        case .Undefined:
+            try container.encode(0, forKey: .rawValue)
+        case .Ambient:
+            try container.encode(1, forKey: .rawValue)
+        }
+    }
 }
 
 /*
