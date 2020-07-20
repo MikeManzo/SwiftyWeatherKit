@@ -51,8 +51,8 @@ public enum WeatherServiceType: Int {
 }
 
 extension WeatherServiceType: Codable {
-    public var enumValue: WeatherServiceType {
-        switch rawValue {
+    static func enumvValue(value: Int) -> WeatherServiceType {
+        switch value {
         case 0 : return .Undefined
         case 1 : return .Ambient
         default: return .Undefined
